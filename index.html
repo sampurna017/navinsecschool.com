@@ -4,72 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Navin Secondary School</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <header class="navbar">
   <h2>Navin Secondary School</h2>
-
   <nav class="menu">
     <a href="#">Home</a>
-
-    <div class="dropdown">
-      <span>About ▾</span>
-      <div class="dropdown-content">
-        <a href="#about">About</a>
-        <a href="#stats">Stats</a>
-      </div>
-    </div>
-
-    <a href="#gallery">Gallery</a>
-    <a href="#newsSection">News</a>
+    <a href="#news">News</a>
     <a href="#results">Results</a>
     <a href="#admission">Admission</a>
-
     <button onclick="showLogin()">Admin</button>
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <h1>Navin Secondary School</h1>
-    <p>Inspiring excellence and shaping the future</p>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-  <h2>About School</h2>
-  <p>We provide quality education and discipline for future success.</p>
-</section>
-
-<!-- STATS -->
-<section id="stats" class="section">
-  <h2>School Stats</h2>
-  <div class="grid">
-    <div class="stat"><h3>1200+</h3><p>Students</p></div>
-    <div class="stat"><h3>75+</h3><p>Staff</p></div>
-    <div class="stat"><h3>30+</h3><p>Classrooms</p></div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="section">
-  <h2>Gallery</h2>
-  <div class="grid">
-    <img src="https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg">
-    <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg">
-    <img src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg">
-  </div>
+  <h1>Welcome to Navin Secondary School</h1>
 </section>
 
 <!-- NEWS -->
-<section id="newsSection" class="section">
+<section id="news" class="section">
   <h2>School News</h2>
 
   <div id="newsContainer" class="grid"></div>
@@ -77,9 +33,9 @@
   <div id="adminPanel" class="admin-panel">
     <h3>Add News</h3>
     <input id="title" placeholder="Title">
-    <input id="image" placeholder="Image URL">
+    <input type="file" id="imageFile">
     <textarea id="desc" placeholder="Description"></textarea>
-    <button onclick="addNews()">Add</button>
+    <button onclick="addNews()">Add News</button>
   </div>
 </section>
 
@@ -95,19 +51,19 @@
   <div id="resultAdmin" class="admin-panel">
     <h3>Add Result</h3>
     <input id="rname" placeholder="Name">
-    <input id="roll" placeholder="Roll">
+    <input id="roll" placeholder="Roll No">
     <input id="math" placeholder="Math">
     <input id="science" placeholder="Science">
     <input id="english" placeholder="English">
-    <button onclick="addResult()">Add Result</button>
+    <button onclick="addResult()">Save Result</button>
   </div>
 </section>
 
 <!-- ADMISSION -->
 <section id="admission" class="section">
   <h2>Admission</h2>
-  <input placeholder="Name"><br>
-  <input placeholder="Email"><br>
+  <input placeholder="Name"><br><br>
+  <input placeholder="Email"><br><br>
   <button>Apply</button>
 </section>
 
