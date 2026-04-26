@@ -1,33 +1,30 @@
-body { font-family: Arial; margin:0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body { font-family: Arial; }
 
 /* NAVBAR */
 .navbar {
   background:black;
   color:white;
-  padding:15px;
   display:flex;
   justify-content:space-between;
+  padding:15px;
 }
 
-/* MENU */
-.menu a {
+.menu a, .menu span {
   color:white;
   margin:0 10px;
+  cursor:pointer;
   text-decoration:none;
 }
 
 /* DROPDOWN */
-.dropdown {
-  display:inline-block;
-  position:relative;
-}
+.dropdown { position:relative; display:inline-block; }
 
 .dropdown-content {
   display:none;
   position:absolute;
   background:white;
-  color:black;
-  min-width:150px;
 }
 
 .dropdown-content a {
@@ -36,31 +33,36 @@ body { font-family: Arial; margin:0; }
   color:black;
 }
 
-.dropdown:hover .dropdown-content {
-  display:block;
-}
+.dropdown:hover .dropdown-content { display:block; }
 
 /* HERO */
 .hero {
-  height:60vh;
+  height:80vh;
   background:url("https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg") center/cover;
   display:flex;
   justify-content:center;
   align-items:center;
   color:white;
-  font-size:30px;
+  text-align:center;
 }
 
+.hero-text h1 { font-size:50px; }
+
 /* SECTION */
-.section {
-  padding:40px;
-}
+.section { padding:50px 30px; }
 
 /* GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
+}
+
+/* STATS */
+.stat {
+  background:#f4f4f4;
+  text-align:center;
+  padding:20px;
 }
 
 /* GALLERY */
@@ -71,14 +73,7 @@ body { font-family: Arial; margin:0; }
   border-radius:10px;
 }
 
-/* STATS */
-.stat-box {
-  text-align:center;
-  background:#f4f4f4;
-  padding:20px;
-}
-
-/* CARD */
+/* NEWS CARD */
 .card {
   border:1px solid #ddd;
   padding:10px;
@@ -88,6 +83,13 @@ body { font-family: Arial; margin:0; }
   width:100%;
   height:150px;
   object-fit:cover;
+}
+
+/* FORM */
+.form input, .form textarea {
+  width:100%;
+  margin:10px 0;
+  padding:10px;
 }
 
 /* LOGIN */
@@ -104,7 +106,13 @@ body { font-family: Arial; margin:0; }
 /* ADMIN */
 .admin-panel {
   display:none;
-  background:#eee;
-  padding:20px;
   margin-top:20px;
+}
+
+/* FOOTER */
+.footer {
+  background:black;
+  color:white;
+  text-align:center;
+  padding:20px;
 }
