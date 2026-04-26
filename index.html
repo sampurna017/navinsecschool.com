@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navin Secondary School</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <h3>Navin Secondary School</h3>
+  <button onclick="showLogin()">Admin</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  Welcome to Navin Secondary School
+</div>
+
+<!-- NEWS -->
+<div class="section">
+  <h2>School News</h2>
+  <div id="news" class="grid"></div>
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel" class="admin-panel">
+    <h3>Admin Dashboard</h3>
+    <input id="title" placeholder="Title"><br><br>
+    <input id="image" placeholder="Image URL"><br><br>
+    <textarea id="desc" placeholder="Description"></textarea><br><br>
+    <button onclick="addNews()">Add News</button>
+  </div>
+</div>
+
+<!-- LOGIN BOX -->
+<div id="loginBox" class="login-box">
+  <h3>Admin Login</h3>
+  <input type="password" id="pass" placeholder="Password"><br><br>
+  <button onclick="login()">Login</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
