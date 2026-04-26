@@ -1,71 +1,49 @@
 const ADMIN_PASS = "1234";
 
-// DEFAULT NEWS (first load)
+/* DEFAULT NEWS */
 if (!localStorage.getItem("news")) {
-  const defaultNews = [
+  localStorage.setItem("news", JSON.stringify([
     {
-      title: "New Library Opened",
+      title: "Library Opened",
       image: "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg",
-      desc: "Modern learning space for students."
-    },
-    {
-      title: "Science Fair",
-      image: "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg",
-      desc: "Students presented amazing projects."
+      desc: "New modern library"
     }
-  ];
-  localStorage.setItem("news", JSON.stringify(defaultNews));
+  ]));
 }
 
-// SHOW LOGIN
+/* LOGIN */
 function showLogin() {
   document.getElementById("loginBox").style.display = "block";
 }
 
-// LOGIN
 function login() {
   let p = document.getElementById("pass").value;
 
   if (p === ADMIN_PASS) {
     document.getElementById("loginBox").style.display = "none";
-    document.getElementById("adminPanel").style.display = "block";
+
+    let a = document.getElementById("adminPanel");
+    let r = document.getElementById("resultAdmin");
+
+    if (a) a.style.display = "block";
+    if (r) r.style.display = "block";
+
   } else {
     alert("Wrong password");
   }
 }
 
-// ADD NEWS
-function addNews() {
-  let title = document.getElementById("title").value;
-  let image = document.getElementById("image").value;
-  let desc = document.getElementById("desc").value;
-
-  let data = JSON.parse(localStorage.getItem("news")) || [];
-  data.push({ title, image, desc });
-
-  localStorage.setItem("news", JSON.stringify(data));
-  loadNews();
-}
-
-// DELETE
-function deleteNews(i) {
-  let data = JSON.parse(localStorage.getItem("news"));
-  data.splice(i,1);
-  localStorage.setItem("news", JSON.stringify(data));
-  loadNews();
-}
-
-// LOAD
+/* NEWS */
 function loadNews() {
-  let news = JSON.parse(localStorage.getItem("news")) || [];
+  let data = JSON.parse(localStorage.getItem("news")) || [];
   let box = document.getElementById("newsContainer");
 
   box.innerHTML = "";
 
-  news.forEach((n,i)=>{
+  data.forEach((n,i)=>{
     box.innerHTML += `
       <div class="card">
-        <img src="${n.image}" onerror="this.src='https://via.placeholder.com/300'">
+        <img src="${n.image}">
         <h3>${n.title}</h3>
         <p>${n.desc}</p>
         <button onclick="deleteNews(${i})">Delete</button>
@@ -74,4 +52,60 @@ function loadNews() {
   });
 }
 
-loadNews();
+function addNews() {
+  let data = JSON.parse(localStorage.getItem("news"));
+  data.push({
+    title: title.value,
+    image: image.value,
+    desc: desc.value
+  });
+  localStorage.setItem("news", JSON.stringify(data));
+  loadNews();
+}
+
+function deleteNews(i) {
+  let data = JSON.parse(localStorage.getItem("news"));
+  data.splice(i,1);
+  localStorage.setItem("news", JSON.stringify(data));
+  loadNews();
+}
+
+/* RESULT SYSTEM */
+function addResult() {
+  let data = JSON.parse(localStorage.getItem("results")) || [];
+
+  let math = +document.getElementById("math").value;
+  let science = +document.getElementById("science").value;
+  let english = +document.getElementById("english").value;
+
+  let total = math + science + english;
+  let percent = (total/300*100).toFixed(2);
+
+  data.push({
+    name: rname.value,
+    roll: roll.value,
+    math, science, english, total, percent
+  });
+
+  localStorage.setItem("results", JSON.stringify(data));
+}
+
+function searchResult() {
+  let rollNo = searchRoll.value;
+  let data = JSON.parse(localStorage.getItem("results")) || [];
+
+  let f = data.find(s=>s.roll === rollNo);
+  let box = document.getElementById("resultBox");
+
+  if (f) {
+    box.innerHTML = `
+      <h3>${f.name}</h3>
+      <p>Total: ${f.total}</p>
+      <p>Percentage: ${f.percent}%</p>
+    `;
+  } else {
+    box.innerHTML = "No result found";
+  }
+}
+
+window.onload = loadNews;
