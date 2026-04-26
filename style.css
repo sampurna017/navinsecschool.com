@@ -1,73 +1,110 @@
-body {
-  font-family: Arial;
-  margin: 0;
-}
+body { font-family: Arial; margin:0; }
 
 /* NAVBAR */
 .navbar {
-  background: black;
-  color: white;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
+  background:black;
+  color:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+}
+
+/* MENU */
+.menu a {
+  color:white;
+  margin:0 10px;
+  text-decoration:none;
+}
+
+/* DROPDOWN */
+.dropdown {
+  display:inline-block;
+  position:relative;
+}
+
+.dropdown-content {
+  display:none;
+  position:absolute;
+  background:white;
+  color:black;
+  min-width:150px;
+}
+
+.dropdown-content a {
+  display:block;
+  padding:10px;
+  color:black;
+}
+
+.dropdown:hover .dropdown-content {
+  display:block;
 }
 
 /* HERO */
 .hero {
-  height: 60vh;
-  background: url("https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg") center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 30px;
+  height:60vh;
+  background:url("https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg") center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:30px;
 }
 
 /* SECTION */
 .section {
-  padding: 40px;
+  padding:40px;
 }
 
 /* GRID */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* GALLERY */
+#gallery img {
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* STATS */
+.stat-box {
+  text-align:center;
+  background:#f4f4f4;
+  padding:20px;
 }
 
 /* CARD */
 .card {
-  border: 1px solid #ddd;
-  padding: 10px;
+  border:1px solid #ddd;
+  padding:10px;
 }
 
 .card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+  width:100%;
+  height:150px;
+  object-fit:cover;
 }
 
 /* LOGIN */
 .login-box {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border: 1px solid #ccc;
-  display: none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  padding:20px;
+  display:none;
 }
 
-/* ADMIN PANEL */
+/* ADMIN */
 .admin-panel {
-  display: none;
-  background: #f4f4f4;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-button {
-  padding: 8px 12px;
-  cursor: pointer;
+  display:none;
+  background:#eee;
+  padding:20px;
+  margin-top:20px;
 }
