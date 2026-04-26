@@ -1,5 +1,22 @@
 const ADMIN_PASS = "1234";
 
+// DEFAULT NEWS (first load)
+if (!localStorage.getItem("news")) {
+  const defaultNews = [
+    {
+      title: "New Library Opened",
+      image: "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg",
+      desc: "Modern learning space for students."
+    },
+    {
+      title: "Science Fair",
+      image: "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg",
+      desc: "Students presented amazing projects."
+    }
+  ];
+  localStorage.setItem("news", JSON.stringify(defaultNews));
+}
+
 // SHOW LOGIN
 function showLogin() {
   document.getElementById("loginBox").style.display = "block";
@@ -12,7 +29,6 @@ function login() {
   if (p === ADMIN_PASS) {
     document.getElementById("loginBox").style.display = "none";
     document.getElementById("adminPanel").style.display = "block";
-    alert("Logged in as admin");
   } else {
     alert("Wrong password");
   }
@@ -31,25 +47,25 @@ function addNews() {
   loadNews();
 }
 
-// DELETE NEWS
-function deleteNews(index) {
+// DELETE
+function deleteNews(i) {
   let data = JSON.parse(localStorage.getItem("news"));
-  data.splice(index, 1);
+  data.splice(i,1);
   localStorage.setItem("news", JSON.stringify(data));
   loadNews();
 }
 
-// LOAD NEWS
+// LOAD
 function loadNews() {
   let news = JSON.parse(localStorage.getItem("news")) || [];
-  let container = document.getElementById("news");
+  let box = document.getElementById("newsContainer");
 
-  container.innerHTML = "";
+  box.innerHTML = "";
 
-  news.forEach((n, i) => {
-    container.innerHTML += `
+  news.forEach((n,i)=>{
+    box.innerHTML += `
       <div class="card">
-        <img src="${n.image}">
+        <img src="${n.image}" onerror="this.src='https://via.placeholder.com/300'">
         <h3>${n.title}</h3>
         <p>${n.desc}</p>
         <button onclick="deleteNews(${i})">Delete</button>
@@ -58,21 +74,4 @@ function loadNews() {
   });
 }
 
-// LOAD ON START
-loadNews();// DEFAULT NEWS (first time only)
-if (!localStorage.getItem("news")) {
-  const defaultNews = [
-    {
-      title: "New Library Opened",
-      image: "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg",
-      desc: "Modern library with digital facilities."
-    },
-    {
-      title: "Science Fair",
-      image: "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg",
-      desc: "Students showcased innovative ideas."
-    }
-  ];
-
-  localStorage.setItem("news", JSON.stringify(defaultNews));
-}
+loadNews();
