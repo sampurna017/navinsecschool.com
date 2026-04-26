@@ -59,4 +59,20 @@ function loadNews() {
 }
 
 // LOAD ON START
-loadNews();
+loadNews();// DEFAULT NEWS (first time only)
+if (!localStorage.getItem("news")) {
+  const defaultNews = [
+    {
+      title: "New Library Opened",
+      image: "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg",
+      desc: "Modern library with digital facilities."
+    },
+    {
+      title: "Science Fair",
+      image: "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg",
+      desc: "Students showcased innovative ideas."
+    }
+  ];
+
+  localStorage.setItem("news", JSON.stringify(defaultNews));
+}
